@@ -1,6 +1,18 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
+
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-3LQ665SRHJ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-3LQ665SRHJ');
+</script>
+
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title> '<br>'tag Generator</title>
@@ -214,31 +226,35 @@
             color: var(--black);
         }
 
+        /* ✅ 수정된 팝업 스타일 - 모바일에서 잘리지 않음 */
         .notification {
             position: fixed;
-        
             top: 50%;
             left: 50%;
-            transform: translate(-50%, -50%);
-        
+            transform: translate(-50%, -50%) scale(0.95);
+
             background: var(--black);
             color: var(--white);
             padding: 16px 24px;
             border: 1px solid var(--black);
-        
+
+            max-width: calc(100vw - 40px); /* 화면 너비를 넘지 않도록 */
+            width: max-content;
+            text-align: center;
+            word-break: keep-all;
+
             opacity: 0;
-            transition: all 0.3s ease;
+            transition: opacity 0.3s ease, transform 0.3s ease;
             pointer-events: none;
             z-index: 1000;
-        
+
             font-size: 14px;
             font-weight: 500;
         }
 
-
         .notification.show {
             opacity: 1;
-            transform: translate(-50%, -50%);  /* translate(-50%, -50%)으로 변경 */
+            transform: translate(-50%, -50%) scale(1);
         }
 
         .notification.error {
@@ -270,11 +286,6 @@
 
             button {
                 min-width: 100%;
-            }
-
-            .notification {
-                right: 20px;
-                left: 20px;
             }
         }
     </style>
